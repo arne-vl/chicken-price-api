@@ -20,7 +20,7 @@ def save_price_deinze():
     columns = most_recent_row.css("td")
 
     notation_date = columns[0].text()
-    price_broilers = columns[4].text()
+    price_broilers = columns[4].text()[2:]
     
     return write_to_csv_deinze("data/deinze.csv", notation_date, price_broilers)
 
@@ -36,7 +36,7 @@ def save_price_abc() -> bool:
     columns = most_recent_row.css("td")
 
     notation_week = columns[0].text()
-    price_broilers = columns[1].text()
+    price_broilers = columns[1].text()[2:]
 
     week_number = datetime.now().isocalendar()[1]
     if(int(notation_week) == week_number):

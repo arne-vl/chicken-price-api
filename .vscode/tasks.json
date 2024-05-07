@@ -4,7 +4,7 @@
         {
             "label": "Start API",
             "type": "shell",
-            "command": "fastapi run app.py",
+            "command": "fastapi run src/app.py",
             "presentation": {"echo": true, "reveal": "always", "focus": false, "panel": "shared", "showReuseMessage": false, "clear": true},
         },
     ]
