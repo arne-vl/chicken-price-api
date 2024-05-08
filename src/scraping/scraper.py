@@ -32,13 +32,21 @@ def save_price_abc() -> bool:
     html = HTMLParser(response.text)
 
     most_recent_row = html.css("tr")[1]
+    most_recent_row_2 = html.css("tr")[2]
     
     columns = most_recent_row.css("td")
+    columns_2 = most_recent_row_2.css("td")
 
     notation_week = columns[0].text()
     price_broilers = columns[1].text()[2:]
 
+    notation_week_2 = columns_2[0].text()
+    price_broilers_2 = columns_2[1].text()[2:]
+
     week_number = datetime.now().isocalendar()[1]
+
     if(int(notation_week) == week_number):
         return write_to_csv_abc("data/abc.csv", notation_week, price_broilers)
+    elif(int(notation_week_2) == week_number):
+        return write_to_csv_abc("data/abc.csv", notation_week_2, price_broilers_2)
     return False

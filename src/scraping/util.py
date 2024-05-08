@@ -34,7 +34,6 @@ def write_to_csv_deinze(filename: str, date: str, price: str) -> bool:
     new_row = [date, price]
 
     if row_exists_in_csv(filename, new_row):
-        print("Date already exists in CSV file. Skipping...")
         return False
     
     write(filename, new_row)
@@ -44,7 +43,6 @@ def write_to_csv_abc(filename: str, weeknr: str, price: str) -> bool:
     new_row = [weeknr, price]
 
     if row_exists_in_csv(filename, new_row):
-        print("Week number already exists in CSV file. Skipping...")
         return False
     
     write(filename, new_row)

@@ -30,5 +30,4 @@ def get_last_row(filename: str) -> list:
                 last_row = row
         return last_row
     except:
-        print("Nothing to return.")
         return []

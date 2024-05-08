@@ -1,10 +1,15 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from helper import update, get
 from fastapi_utilities import repeat_at
 
-app = FastAPI()
+@asynccontextmanager
+async def app_lifespan(app: FastAPI):
+    update()
+    yield
 
-@app.on_event("startup")
+app = FastAPI(lifespan=app_lifespan, debug=True)
+
 @repeat_at(cron="0 * * * *") # every hour
 async def get_new_data():
     update()
@@ -13,13 +18,19 @@ async def get_new_data():
 async def root():
     updated = update()
 
+    msg = "Updated nothing"
+
     if updated[0] and updated[1]:
-        return {"message": "Updated ABC & Deinze"}
+        msg = "Updated ABC & Deinze"
+        return {"message": msg}
     if updated[0] and not updated[1]:
-        return {"message": "Updated ABC"}
+        msg = "Updated ABC"
+        return {"message": msg}
     if not updated[0] and updated[1]:
-        return {"message": "Updated Deinze"}
-    return {"message": "Updated nothing"}
+        msg = "Updated Deinze"
+        return {"message": msg}
+    
+    return {"message": msg}
 
 @app.get("/price")
 async def root():
