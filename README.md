@@ -2,9 +2,13 @@
 Bekijk snel de huidige marktprijs van braadkippen per kilo.  
 Zowel Deinze als ABC markt.
 
-## Installatie docker
-```
-git clone https://github.com/arne-vl/WaStaanDeKiekes.git
-cd WaStaanDeKiekes
-docker compose up -d
+## Installatie docker-compose:
+```yaml
+version: "3"
+
+services:
+  chicken-api:
+    image: arnevl/chicken-price-api:latest
+    ports:
+      - 8000:8000
 ```

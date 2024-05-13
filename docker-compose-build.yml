@@ -2,6 +2,6 @@ version: "3"
 
 services:
   chicken-api:
-    image: arnevl/chicken-price-api:latest
+    build: .
     ports:
       - 8000:8000
