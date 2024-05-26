@@ -1,7 +1,6 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from helper import update, get
-from fastapi_utilities import repeat_at
 
 @asynccontextmanager
 async def app_lifespan(app: FastAPI):
@@ -9,10 +8,6 @@ async def app_lifespan(app: FastAPI):
     yield
 
 app = FastAPI(lifespan=app_lifespan, debug=True)
-
-@repeat_at(cron="0 * * * *") # every hour
-async def get_new_data():
-    update()
 
 @app.get("/update")
 async def root():

@@ -5,3 +5,5 @@ services:
     image: arnevl/chicken-price-api:latest
     ports:
       - 8000:8000
+    volumes:
+      - .:/data
