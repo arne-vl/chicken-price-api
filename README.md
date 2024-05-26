@@ -13,7 +13,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - .:/data
+      - ./chicken-price-scraper:/data
 ```
 
 ## Methods
