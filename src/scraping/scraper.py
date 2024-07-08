@@ -19,10 +19,13 @@ def save_price_deinze():
     
     columns = most_recent_row.css("td")
 
-    notation_date = columns[0].text()
+    notation_date = datetime.strptime(columns[0].text(), '%d/%m/%y')
+
+    notation_week = notation_date.isocalendar()[1]
+
     price_broilers = columns[4].text()[2:]
     
-    return write_to_csv_deinze("data/deinze.csv", notation_date, price_broilers)
+    return write_to_csv_deinze("data/deinze.csv", notation_week, price_broilers)
 
 def save_price_abc() -> bool:
     url = "https://www.pluimveeslachthuizen.be/nl/node/247"
