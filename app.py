@@ -13,7 +13,7 @@ def scheduledjob():
     update()
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(scheduledjob, 'interval', minutes=1)
+scheduler.add_job(scheduledjob, 'interval', hours=1)
 scheduler.start()
 
 @app.on_event("startup")
