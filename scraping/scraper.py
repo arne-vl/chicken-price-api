@@ -16,7 +16,7 @@ def save_price_deinze():
     html = HTMLParser(response.text)
 
     most_recent_row = html.css("tr")[2]
-    
+
     columns = most_recent_row.css("td")
 
     notation_date = datetime.strptime(columns[0].text(), '%d/%m/%y')
@@ -24,8 +24,8 @@ def save_price_deinze():
     notation_week = notation_date.isocalendar()[1]
 
     price_broilers = columns[4].text()[2:]
-    
-    return write_to_csv_deinze("data/deinze.csv", notation_week, price_broilers)
+
+    return write_to_csv_deinze("data/deinze.csv", str(notation_week), price_broilers)
 
 def save_price_abc() -> bool:
     url = "https://www.pluimveeslachthuizen.be/nl/node/247"
@@ -36,7 +36,7 @@ def save_price_abc() -> bool:
 
     most_recent_row = html.css("tr")[1]
     most_recent_row_2 = html.css("tr")[2]
-    
+
     columns = most_recent_row.css("td")
     columns_2 = most_recent_row_2.css("td")
 
