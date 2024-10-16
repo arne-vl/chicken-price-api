@@ -4,7 +4,7 @@ APScheduler==3.10.4
 certifi==2024.8.30
 click==8.1.7
 colorama==0.4.6
-fastapi==0.112.2
+fastapi==0.115.2
 h11==0.14.0
 httpcore==1.0.5
 httpx==0.27.2
