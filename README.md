@@ -1,7 +1,11 @@
 # Wa staan de kiekes?
-Bekijk snel de huidige marktprijs van braadkippen per kilo.  
-Zowel Deinze als ABC markt.  
+Bekijk snel de huidige marktprijs van braadkippen per kilo.
+Zowel Deinze als ABC markt.
 Wordt elk uur vernieuwd.
+
+<a href="https://hub.docker.com/r/arnevl/chicken-price-api" target="_blank">
+  <img alt="Static Badge" src="https://img.shields.io/badge/docker%20-%20chicken--price--api%20-%20blue?color=blue">
+</a>
 
 ## Installatie docker-compose:
 ```yaml
@@ -17,5 +21,5 @@ services:
 ```
 
 ## Methods
-`/price` : ophalen laatste prijs  
+`/price` : ophalen laatste prijs
 `/update` : manueel updaten
