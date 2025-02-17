@@ -13,10 +13,9 @@ Een eenvoudige API om de huidige marktprijs van braadkippen per kilo op te halen
     /update → Forceer een handmatige update van de prijzen.
 
 ## 🚀 Snelle Start
-
-    Start de API met Docker (zie installatie-instructies).
-    De API is toegankelijk op poort 8000.
-    Gebruik de endpoints om actuele prijzen op te halen of een update te forceren.
+1. Start de API met Docker (zie installatie-instructies).
+2. De API is toegankelijk op poort 8000.
+3. Gebruik de endpoints om actuele prijzen op te halen of een update te forceren.
 
 ## 🔄 Automatische Updates
 
