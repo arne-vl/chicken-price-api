@@ -1,11 +1,9 @@
 # 🐔 Chicken Price API
-
-Een eenvoudige API om de huidige marktprijs van braadkippen per kilo op te halen. De prijzen worden elk uur vernieuwd voor zowel Deinze als ABC Markt.  
-
-  
 <a href="https://hub.docker.com/r/arnevl/chicken-price-api" target="_blank">
   <img alt="Static Badge" src="https://img.shields.io/badge/docker%20-%20arnevl/chicken--price--api%20-%20blue?color=blue">
 </a>  
+
+Een eenvoudige API om de huidige marktprijs van braadkippen per kilo op te halen. De prijzen worden elk uur vernieuwd voor zowel Deinze als ABC Markt.  
 
 ## 📌 Functionaliteiten
 
