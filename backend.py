@@ -1,15 +1,16 @@
 from typing import Optional
 from custom_types import PriceData, PriceNotation
+from datetime import datetime
 import psycopg2
 import os
 import csv
 
 
 class Backend:
-    def write_abc(self, data: PriceNotation) -> None:
+    def write_abc(self, data: PriceNotation) -> bool:
         pass
 
-    def write_deinze(self, data: PriceNotation) -> None:
+    def write_deinze(self, data: PriceNotation) -> bool:
         pass
 
     def get_last_datapoint(self) -> Optional[PriceNotation]:
@@ -32,27 +33,31 @@ class LocalBackend(Backend):
                 with open(file, mode="w", newline="") as f:
                     csv.writer(f).writerow(["week_start", "week_end", "price"])
 
-    def write_abc(self, data: PriceNotation) -> None:
+    def write_abc(self, data: PriceNotation) -> bool:
         if data != self.get_last_datapoint(self.abc_file):
             with open(self.abc_file, mode="a", newline="") as f:
                 csv.writer(f).writerow(
                     [data["date_start"], data["date_end"], data["price"]]
                 )
-            return
+            return True
 
-    def write_deinze(self, data: PriceNotation) -> None:
+        return False
+
+    def write_deinze(self, data: PriceNotation) -> bool:
         if data != self.get_last_datapoint(self.deinze_file):
             with open(self.deinze_file, mode="a", newline="") as f:
                 csv.writer(f).writerow(
                     [data["date_start"], data["date_end"], data["price"]]
                 )
-            return
+            return True
 
-    def get_last_datapoint(self, file: str) -> Optional[PriceNotation]:
+        return False
+
+    def get_last_datapoint(self, file: str, depth=0) -> Optional[PriceNotation]:
         with open(file, mode="r") as f:
             reader = list(csv.reader(f))
-            if len(reader) > 1:
-                last_row = reader[-1]
+            if len(reader) > depth + 1:
+                last_row = reader[-(1 + depth)]
                 if last_row == []:
                     return None
                 return PriceNotation(
@@ -61,3 +66,12 @@ class LocalBackend(Backend):
                     price=float(last_row[2]),
                 )
         return None
+
+    def get_current_price(self) -> PriceData:
+        last_abc = self.get_last_datapoint(self.abc_file)
+        last_deinze = self.get_last_datapoint(self.deinze_file)
+
+        if datetime.now() < datetime.strptime(last_abc["date_start"], "%Y-%m-%d"):
+            last_abc = self.get_last_datapoint(self.abc_file, 1)
+
+        return PriceData(abc=last_abc["price"], deinze=last_deinze["price"])

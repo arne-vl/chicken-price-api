@@ -17,7 +17,7 @@ backend = LocalBackend()
 
 def scheduledjob():
     logger.info(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Checking Price")
-    # Get Price
+    update()
 
 
 scheduler = BackgroundScheduler()
@@ -33,14 +33,17 @@ def startup_event():
 
 @app.get("/update")
 def update():
-    backend.write_abc(get_price_abc())
-    backend.write_deinze(get_price_deinze())
-    return
+    abc_result = backend.write_abc(get_price_abc())
+    deinze_result = backend.write_deinze(get_price_deinze())
 
+    return {
+        "abc_updated": abc_result,
+        "deinze_updated": deinze_result
+    }
 
 @app.get("/current-price")
 def get_current_price() -> PriceData:
-    return {}
+    return backend.get_current_price()
 
 
 @app.on_event("shutdown")
