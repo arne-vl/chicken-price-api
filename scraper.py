@@ -25,9 +25,7 @@ def get_price_deinze() -> PriceNotation:
     notation_week = get_week_start_end(notation_date)
 
     return PriceNotation(
-        date_start=notation_week[0],
-        date_end=notation_week[1],
-        price=notation_price
+        date_start=notation_week[0], date_end=notation_week[1], price=notation_price
     )
 
 
@@ -48,9 +46,7 @@ def get_price_abc() -> PriceNotation:
     )
 
     return PriceNotation(
-        date_start=notation_week[0],
-        date_end=notation_week[1],
-        price=notation_price
+        date_start=notation_week[0], date_end=notation_week[1], price=notation_price
     )
 
 

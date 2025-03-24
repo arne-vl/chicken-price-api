@@ -29,19 +29,23 @@ class LocalBackend(Backend):
         for file in [self.abc_file, self.deinze_file]:
             os.makedirs(os.path.dirname(file), exist_ok=True)
             if not os.path.exists(file):
-                with open(file, mode="w", newline='') as f:
+                with open(file, mode="w", newline="") as f:
                     csv.writer(f).writerow(["week_start", "week_end", "price"])
 
     def write_abc(self, data: PriceNotation) -> None:
         if data != self.get_last_datapoint(self.abc_file):
-            with open(self.abc_file, mode="a", newline='') as f:
-                csv.writer(f).writerow([data["date_start"], data["date_end"], data["price"]])
+            with open(self.abc_file, mode="a", newline="") as f:
+                csv.writer(f).writerow(
+                    [data["date_start"], data["date_end"], data["price"]]
+                )
             return
 
     def write_deinze(self, data: PriceNotation) -> None:
         if data != self.get_last_datapoint(self.deinze_file):
-            with open(self.deinze_file, mode="a", newline='') as f:
-                csv.writer(f).writerow([data["date_start"], data["date_end"], data["price"]])
+            with open(self.deinze_file, mode="a", newline="") as f:
+                csv.writer(f).writerow(
+                    [data["date_start"], data["date_end"], data["price"]]
+                )
             return
 
     def get_last_datapoint(self, file: str) -> Optional[PriceNotation]:
@@ -49,7 +53,8 @@ class LocalBackend(Backend):
             reader = list(csv.reader(f))
             if len(reader) > 1:
                 last_row = reader[-1]
-                if last_row == []: return None
+                if last_row == []:
+                    return None
                 return PriceNotation(
                     date_start=last_row[0],
                     date_end=last_row[1],
