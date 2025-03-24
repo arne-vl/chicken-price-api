@@ -21,5 +21,5 @@ services:
 ```
 
 ## Methods
-`/price` : ophalen laatste prijs
+`/current-price` : ophalen laatste prijs
 `/update` : manueel updaten
