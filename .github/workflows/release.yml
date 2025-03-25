@@ -35,3 +35,9 @@ jobs:
         run: |
           docker push ghcr.io/chicken-price-api:${{ env.VERSION }}
           docker push ghcr.io/chicken-price-api:latest
+
+      - name: Create GitHub release
+        run: |
+          gh release create ${{ env.VERSION }} --title "${{ env.VERSION }}" --notes "Release ${GITHUB_REF#refs/tags/}" --target ${{ github.sha }} --repo ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
