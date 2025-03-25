@@ -1,9 +1,0 @@
-version: "3"
-
-services:
-  chicken-api:
-    image: arnevl/chicken-price-api:latest
-    ports:
-      - 8000:8000
-    volumes:
-      - ./chicken-price-scraper:/data
