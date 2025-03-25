@@ -7,7 +7,7 @@ Een eenvoudige API om de huidige marktprijs van braadkippen per kilo op te halen
 
 ## 📌 Functionaliteiten
 
-    /price → Haal de meest recente kippenprijs op.
+    /current-price → Haal de meest recente kippenprijs op.
     /update → Forceer een handmatige update van de prijzen.
 
 ## 🚀 Snelle Start
