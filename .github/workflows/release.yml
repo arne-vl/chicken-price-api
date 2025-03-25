@@ -28,13 +28,13 @@ jobs:
 
       - name: Build Image
         run: |
-          docker build . --file Dockerfile --tag ghcr.io/chicken-price-api:${{ env.VERSION }}
-          docker tag ghcr.io/chicken-price-api:${{ env.VERSION }} ghcr.io/chicken-price-qpi:latest
+          docker build . --file Dockerfile --tag ghcr.io/arne-vl/chicken-price-api:${{ env.VERSION }}
+          docker tag ghcr.io/arne-vl/chicken-price-api:${{ env.VERSION }} ghcr.io/arne-vl/chicken-price-qpi:latest
 
       - name: Push Image to GHCR
         run: |
-          docker push ghcr.io/chicken-price-api:${{ env.VERSION }}
-          docker push ghcr.io/chicken-price-api:latest
+          docker push ghcr.io/arne-vl/chicken-price-api:${{ env.VERSION }}
+          docker push ghcr.io/arne-vl/chicken-price-api:latest
 
       - name: Create GitHub release
         run: |
