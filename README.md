@@ -29,9 +29,14 @@ Voor vragen of verbeteringen, open een issue of draag bij aan het project! 🐓
 
 ## 💾 Opslaan in Database
 Er is de mogelijkheid om de data op te slaan in een PostgreSQL database, hiervoor gebruik je volgende environment variabelen:
-- `DB_NAME`
-- `DB_USER`
-- `DB_PASSWORD`
-- `DB_HOST`
-- `DB_PORT`
-- `DB_SCHEMA`
+
+| Naam            | Standaard    | Beschrijving                                           |
+| --------------- | ------------ | ------------------------------------------------------ |
+| DB_NAME         |              | De naam van de Postgres Database                       |
+| DB_USER         |              | De naam van de Postgres gebruiker die verbinding maakt |
+| DB_PASSWORD     |              | Het wachtwoord voor de Postgres gebruiker              |
+| DB_HOST         |              | De host van de Postgres instantie                      |
+| DB_PORT         | 5432         | De poort waarop toegang tot Postgres                   |
+| DB_SCHEMA       | public       | Het schema waarin de gegevens worden opgeslagen        |
+| DB_ABC_TABLE    | abc_price    | De naam voor de tabel met ABC prijsnoteringen          |
+| DB_DEINZE_TABLE | deinze_price | De naam voor de tabel met Deinze prijsnoteringen       |

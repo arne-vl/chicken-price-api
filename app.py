@@ -19,8 +19,8 @@ db_config = {
     "user": os.getenv("DB_USER"),
     "password": os.getenv("DB_PASSWORD"),
     "host": os.getenv("DB_HOST"),
-    "port": os.getenv("DB_PORT"),
-    "schema": os.getenv("DB_SCHEMA"),
+    "port": os.getenv("DB_PORT", 5432),
+    "schema": os.getenv("DB_SCHEMA", "public"),
     "abc_table": os.getenv("DB_ABC_TABLE", "abc_price"),
     "deinze_table": os.getenv("DB_DEINZE_TABLE", "deinze_price")
 }
