@@ -38,6 +38,9 @@ jobs:
       - name: Push Image to GHCR
         run: |
           docker push ghcr.io/arne-vl/chicken-price-api:${{ env.VERSION }}
+
+      - name: Push Latest Image to GHCR
+        run: |
           docker push ghcr.io/arne-vl/chicken-price-api:latest
 
       - name: Create GitHub release
