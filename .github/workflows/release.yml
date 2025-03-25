@@ -9,6 +9,10 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    permissions:
+      contants: read
+      packages: write
+
     environment:
       name: Docker
 
