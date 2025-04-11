@@ -106,7 +106,8 @@ class PostgresBackend(Backend):
         CREATE TABLE IF NOT EXISTS {self.schema}.{self.abc_table} (
             week_start DATE,
             week_end DATE,
-            price FLOAT
+            price FLOAT,
+            PRIMARY KEY (week_start, week_end)
         );
         """)
 
@@ -114,7 +115,8 @@ class PostgresBackend(Backend):
         CREATE TABLE IF NOT EXISTS {self.schema}.{self.deinze_table} (
             week_start DATE,
             week_end DATE,
-            price FLOAT
+            price FLOAT,
+            PRIMARY KEY (week_start, week_end)
         );
         """)
 
