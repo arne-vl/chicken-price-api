@@ -32,16 +32,16 @@ jobs:
 
       - name: Build Image
         run: |
-          docker build . --file Dockerfile --tag ghcr.io/arne-vl/chicken-price-api:${{ env.VERSION }}
-          docker tag ghcr.io/arne-vl/chicken-price-api:${{ env.VERSION }} ghcr.io/arne-vl/chicken-price-api:latest
+          docker build . --file Dockerfile --tag ghcr.io/avl-systems/chicken-price-api:${{ env.VERSION }}
+          docker tag ghcr.io/avl-systems/chicken-price-api:${{ env.VERSION }} ghcr.io/avl-systems/chicken-price-api:latest
 
       - name: Push Image to GHCR
         run: |
-          docker push ghcr.io/arne-vl/chicken-price-api:${{ env.VERSION }}
+          docker push ghcr.io/avl-systems/chicken-price-api:${{ env.VERSION }}
 
       - name: Push Latest Image to GHCR
         run: |
-          docker push ghcr.io/arne-vl/chicken-price-api:latest
+          docker push ghcr.io/avl-systems/chicken-price-api:latest
 
       - name: Create GitHub release
         run: |
