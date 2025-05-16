@@ -13,7 +13,7 @@ version: "3"
 
 services:
     chicken-price-api:
-        image: ghcr.io/avl-systems/chicken-price-api:latest
+        image: ghcr.io/arne-vl/chicken-price-api:latest
         ports:
             - 8000:8000
         volumes:
